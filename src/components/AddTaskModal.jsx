@@ -8,11 +8,17 @@ import {
   Textarea,
 } from "flowbite-react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addTask } from "../redux/features/tasks/taskSlice";
 
 const AddTaskModal = ({ openModal, setOpenModal }) => {
   const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
+
   const onSubmit = (data) => {
-    console.log(data);
+    setOpenModal(false);
+    dispatch(addTask(data));
+    reset();
   };
   return (
     <div>
@@ -91,7 +97,7 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
             </div>
 
             <Button size="sm" gradientDuoTone="purpleToBlue" type="submit">
-              Submit Task
+              Add
             </Button>
           </form>
         </Modal.Body>

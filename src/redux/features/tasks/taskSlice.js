@@ -5,7 +5,7 @@ const initialState = {
     {
       id: 1,
       title: "Create a todo App",
-      status: "completed",
+      status: "pending",
       description: "create it.",
       assignedTo: "Md. Pieash Ahmed",
       priority: "high",
@@ -23,7 +23,7 @@ const tasksSlice = createSlice({
       } else {
         const lastElement = state.tasks.at(-1);
         state.tasks.push({
-          id: lastElement.id,
+          id: lastElement.id + 1,
           status: "pending",
           ...payload,
         });
