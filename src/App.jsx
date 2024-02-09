@@ -4,11 +4,13 @@ import FooterPage from "./pages/shared/FooterPage";
 
 const App = () => {
   return (
-    <div>
+    <>
       <HeaderPage />
-      <Outlet />
+      <div className="max-w-7xl mx-auto">
+        <Outlet />
+      </div>
       <FooterPage />
-    </div>
+    </>
   );
 };
 
