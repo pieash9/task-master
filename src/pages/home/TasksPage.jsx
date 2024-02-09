@@ -2,7 +2,7 @@ const TasksPage = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
       <div>
-        <div className="flex justify-between bg-blue-200 py-3 px-4 rounded-md">
+        <div className="flex justify-between items-center bg-blue-200 py-3 px-4 rounded-md">
           <p className="text-xl font-semibold text-gray-700 dark:text-gray-300">
             Up Next
           </p>
