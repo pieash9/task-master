@@ -17,9 +17,9 @@ const TasksCard = ({ task }) => {
     updatedStatus = "completed";
   }
   return (
-    <div className="bg-gray-600/10 rounded-md p-5">
+    <div className="bg-gray-600/10 rounded-md p-5 overflow-hidden">
       <h1
-        className={`text-lg font-semibold mb-3  ${
+        className={`text-xl font-semibold mb-3  ${
           task.priority === "high" ? "text-red-500" : ""
         } ${task.priority === "medium" ? "text-yellow-300" : ""} ${
           task.priority === "low" ? "text-green-400" : ""
@@ -29,7 +29,10 @@ const TasksCard = ({ task }) => {
       </h1>
       <p className="mb-3">{task?.description}</p>
       <p className="text-sm">
-        Assigned to - <span className="capitalize">{task?.assignedTo}</span>
+        Assigned to -{" "}
+        <span className="capitalize bg-blue-200 px-2 py-.5 rounded font-medium dark:text-black">
+          {task?.assignedTo}
+        </span>
       </p>
 
       <div className="flex justify-end mt-3">

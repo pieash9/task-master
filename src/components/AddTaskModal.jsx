@@ -39,42 +39,40 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
           >
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="title" value="Title" />
+                <Label htmlFor="title" value="Title *" />
               </div>
               <TextInput
                 id="title"
                 type="text"
                 placeholder="Task name"
                 required
-                gradientDuoTone="purpleToBlue"
                 {...register("title")}
               />
             </div>
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="description" value="Description" />
+                <Label htmlFor="description" value="Description *" />
               </div>
               <Textarea
                 id="description"
                 type="text"
                 placeholder="Details about task..."
                 required
-                gradientDuoTone="purpleToBlue"
                 {...register("description")}
               />
             </div>
 
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="assignTo" value="Assign To" />
+                <Label htmlFor="assignTo" value="Assign To *" />
               </div>
               <Select
                 id="assignTo"
                 required
-                gradientDuoTone="purpleToBlue"
+                defaultValue=""
                 {...register("assignedTo")}
               >
-                <option disabled selected value="">
+                <option disabled value="">
                   Select a name
                 </option>
                 <option value="md. pieash">Md. Pieash</option>
@@ -85,21 +83,16 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
 
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="priority" value="Priority" />
+                <Label htmlFor="priority" value="Priority *" />
               </div>
-              <Select
-                id="priority"
-                required
-                gradientDuoTone="purpleToBlue"
-                {...register("priority")}
-              >
+              <Select id="priority" required {...register("priority")}>
                 <option value="high">High</option>
                 <option value="medium">Medium</option>
                 <option value="low">Low</option>
               </Select>
             </div>
 
-            <Button size="sm" gradientDuoTone="purpleToBlue" type="submit">
+            <Button size="sm" color="blue" type="submit">
               Add
             </Button>
           </form>

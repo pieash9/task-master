@@ -18,7 +18,6 @@ const UpdateTaskModal = ({ task, openModal, setOpenModal }) => {
 
   const onSubmit = (data) => {
     data.id = task.id;
-    console.log(data);
     setOpenModal(false);
     dispatch(updateTask(data));
     reset();
@@ -42,7 +41,7 @@ const UpdateTaskModal = ({ task, openModal, setOpenModal }) => {
           >
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="title" value="Title" />
+                <Label htmlFor="title" value="Title *" />
               </div>
               <TextInput
                 id="title"
@@ -50,13 +49,12 @@ const UpdateTaskModal = ({ task, openModal, setOpenModal }) => {
                 placeholder="Task name"
                 required
                 defaultValue={task.title}
-                gradientDuoTone="purpleToBlue"
                 {...register("title")}
               />
             </div>
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="description" value="Description" />
+                <Label htmlFor="description" value="Description *" />
               </div>
               <Textarea
                 id="description"
@@ -64,37 +62,34 @@ const UpdateTaskModal = ({ task, openModal, setOpenModal }) => {
                 placeholder="Details about task..."
                 required
                 defaultValue={task.description}
-                gradientDuoTone="purpleToBlue"
                 {...register("description")}
               />
             </div>
 
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="assignTo" value="Assign To" />
+                <Label htmlFor="assignTo" value="Assign To *" />
               </div>
               <Select
                 id="assignTo"
                 required
-                defaultValue={task.assignTo}
-                gradientDuoTone="purpleToBlue"
+                defaultValue={task.assignedTo}
                 {...register("assignedTo")}
               >
-                <option value="md. pieash">Md. Pieash</option>
                 <option value="risan khan">Risan Khan</option>
+                <option value="md. pieash">Md. Pieash</option>
                 <option value="nihan khan">Nihan Khan</option>
               </Select>
             </div>
 
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="priority" value="Priority" />
+                <Label htmlFor="priority" value="Priority *" />
               </div>
               <Select
                 id="priority"
                 required
                 defaultValue={task.priority}
-                gradientDuoTone="purpleToBlue"
                 {...register("priority")}
               >
                 <option value="high">High</option>
@@ -103,7 +98,7 @@ const UpdateTaskModal = ({ task, openModal, setOpenModal }) => {
               </Select>
             </div>
 
-            <Button size="sm" gradientDuoTone="purpleToBlue" type="submit">
+            <Button size="sm" color="blue" type="submit">
               Update
             </Button>
           </form>

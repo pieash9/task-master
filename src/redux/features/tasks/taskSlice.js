@@ -8,7 +8,7 @@ const getTasksFromLocalStorage = () => {
         {
           id: 1,
           title: "Create a todo App",
-          status: "pending",
+          status: "completed",
           description: "create it.",
           assignedTo: "md. pieash",
           priority: "high",

@@ -12,7 +12,7 @@ const HeaderPage = () => {
   const dispatch = useDispatch();
   return (
     <nav className=" w-full bg-gray-200/80 shadow-lg dark:bg-gray-800">
-      <div className="flex justify-between py-4 max-w-7xl mx-auto">
+      <div className="flex justify-between p-4 max-w-7xl mx-auto">
         <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
           Task Master
         </span>
@@ -29,11 +29,7 @@ const HeaderPage = () => {
               <FaMoon className="size-5" />
             )}
           </Button>
-          <Button
-            onClick={() => setOpenModal(true)}
-            gradientDuoTone="purpleToBlue"
-            size="sm"
-          >
+          <Button onClick={() => setOpenModal(true)} color="blue" size="sm">
             Add a Task
           </Button>
         </div>
