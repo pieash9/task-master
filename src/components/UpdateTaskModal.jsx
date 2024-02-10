@@ -9,15 +9,18 @@ import {
 } from "flowbite-react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { addTask } from "../redux/features/tasks/taskSlice";
+import { updateTask } from "../redux/features/tasks/taskSlice";
 
-const AddTaskModal = ({ openModal, setOpenModal }) => {
+const UpdateTaskModal = ({ task, openModal, setOpenModal }) => {
   const { register, handleSubmit, reset } = useForm();
+
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
+    data.id = task.id;
+    console.log(data);
     setOpenModal(false);
-    dispatch(addTask(data));
+    dispatch(updateTask(data));
     reset();
   };
   return (
@@ -31,7 +34,7 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
         <Modal.Header />
         <Modal.Body>
           <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-6">
-            Add a Task
+            Update Task
           </h3>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -46,6 +49,7 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
                 type="text"
                 placeholder="Task name"
                 required
+                defaultValue={task.title}
                 gradientDuoTone="purpleToBlue"
                 {...register("title")}
               />
@@ -59,6 +63,7 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
                 type="text"
                 placeholder="Details about task..."
                 required
+                defaultValue={task.description}
                 gradientDuoTone="purpleToBlue"
                 {...register("description")}
               />
@@ -71,15 +76,13 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
               <Select
                 id="assignTo"
                 required
+                defaultValue={task.assignTo}
                 gradientDuoTone="purpleToBlue"
                 {...register("assignedTo")}
               >
-                <option disabled selected value="">
-                  Select a name
-                </option>
                 <option value="md. pieash">Md. Pieash</option>
                 <option value="risan khan">Risan Khan</option>
-                <option value="nihan khan">Nihan khan</option>
+                <option value="nihan khan">Nihan Khan</option>
               </Select>
             </div>
 
@@ -90,6 +93,7 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
               <Select
                 id="priority"
                 required
+                defaultValue={task.priority}
                 gradientDuoTone="purpleToBlue"
                 {...register("priority")}
               >
@@ -100,7 +104,7 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
             </div>
 
             <Button size="sm" gradientDuoTone="purpleToBlue" type="submit">
-              Add
+              Update
             </Button>
           </form>
         </Modal.Body>
@@ -109,4 +113,4 @@ const AddTaskModal = ({ openModal, setOpenModal }) => {
   );
 };
 
-export default AddTaskModal;
+export default UpdateTaskModal;

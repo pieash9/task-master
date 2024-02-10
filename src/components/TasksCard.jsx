@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt, FaRegEdit } from "react-icons/fa";
 import { GoArrowRight } from "react-icons/go";
 import { useDispatch } from "react-redux";
 import { removeTask, updateStatus } from "../redux/features/tasks/taskSlice";
+import UpdateTaskModal from "./UpdateTaskModal";
+import { useState } from "react";
 
 const TasksCard = ({ task }) => {
+  const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
 
   let updatedStatus;
@@ -25,9 +28,18 @@ const TasksCard = ({ task }) => {
         {task?.title}
       </h1>
       <p className="mb-3">{task?.description}</p>
-      <p className="text-sm">Assigned to - {task?.assignedTo}</p>
+      <p className="text-sm">
+        Assigned to - <span className="capitalize">{task?.assignedTo}</span>
+      </p>
+
       <div className="flex justify-end mt-3">
         <div className="flex gap-3">
+          <button title="Edit">
+            <FaRegEdit
+              onClick={() => setOpenModal(true)}
+              className="h-5 w-5 text-green-500"
+            />
+          </button>
           <button onClick={() => dispatch(removeTask(task.id))} title="Delete">
             <FaRegTrashAlt className="h-5 w-5 text-red-500" />
           </button>
@@ -43,6 +55,11 @@ const TasksCard = ({ task }) => {
           )}
         </div>
       </div>
+      <UpdateTaskModal
+        task={task}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+      />
     </div>
   );
 };

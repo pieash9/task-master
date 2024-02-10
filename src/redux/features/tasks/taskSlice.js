@@ -7,7 +7,7 @@ const initialState = {
       title: "Create a todo App",
       status: "pending",
       description: "create it.",
-      assignedTo: "Md. Pieash Ahmed",
+      assignedTo: "md. pieash",
       priority: "high",
     },
   ],
@@ -36,9 +36,19 @@ const tasksSlice = createSlice({
       const target = state.tasks.find((task) => task.id === payload.id);
       target.status = payload.status;
     },
+    updateTask: (state, { payload }) => {
+      state.tasks = state.tasks.map((task) => {
+        if (task.id === payload.id) {
+          return { ...task, ...payload };
+        } else {
+          return task;
+        }
+      });
+    },
   },
 });
 
-export const { addTask, removeTask, updateStatus } = tasksSlice.actions;
+export const { addTask, removeTask, updateStatus, updateTask } =
+  tasksSlice.actions;
 
 export default tasksSlice.reducer;
