@@ -1,16 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const getTasksFromLocalStorage = () => {
+  const tasks = localStorage.getItem("tasks");
+  return tasks
+    ? JSON.parse(tasks)
+    : [
+        {
+          id: 1,
+          title: "Create a todo App",
+          status: "pending",
+          description: "create it.",
+          assignedTo: "md. pieash",
+          priority: "high",
+        },
+      ];
+};
+
+const storeTaskToLocalStorage = (tasks) =>
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+
 const initialState = {
-  tasks: [
-    {
-      id: 1,
-      title: "Create a todo App",
-      status: "pending",
-      description: "create it.",
-      assignedTo: "md. pieash",
-      priority: "high",
-    },
-  ],
+  tasks: getTasksFromLocalStorage(),
 };
 
 const tasksSlice = createSlice({
@@ -28,13 +38,16 @@ const tasksSlice = createSlice({
           ...payload,
         });
       }
+      storeTaskToLocalStorage(state.tasks);
     },
     removeTask: (state, { payload }) => {
       state.tasks = state.tasks.filter((task) => task.id !== payload);
+      storeTaskToLocalStorage(state.tasks);
     },
     updateStatus: (state, { payload }) => {
       const target = state.tasks.find((task) => task.id === payload.id);
       target.status = payload.status;
+      storeTaskToLocalStorage(state.tasks);
     },
     updateTask: (state, { payload }) => {
       state.tasks = state.tasks.map((task) => {
@@ -44,6 +57,7 @@ const tasksSlice = createSlice({
           return task;
         }
       });
+      storeTaskToLocalStorage(state.tasks);
     },
   },
 });
