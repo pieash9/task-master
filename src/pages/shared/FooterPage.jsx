@@ -10,8 +10,16 @@ const FooterPage = () => {
           year={new Date().getFullYear()}
         />
         <Footer.LinkGroup className="flex gap-4">
-          <Footer.Icon href="#" icon={BsGithub} />
-          <Footer.Icon href="#" icon={BsLinkedin} />
+          <Footer.Icon
+            href="https://github.com/pieash9"
+            target="_blank"
+            icon={BsGithub}
+          />
+          <Footer.Icon
+            href="https://www.linkedin.com/in/pieash9/"
+            target="_blank"
+            icon={BsLinkedin}
+          />
         </Footer.LinkGroup>
       </div>
     </Footer>
